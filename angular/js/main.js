@@ -1,3 +1,10 @@
+require('../css/style.css')
+
+var app = angular.module('myapp', [
+  'myapp.directives.reactcomponents',
+  'react'
+]);
+
 angular.module('invoicing', [])
 
 // The default logo for the invoice
