@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, Router} from "react-router";
-import {connect} from ".";
 import loadable from "react-loadable";
 import Loader from "./common/Loader/Loader.js";
 import {setTotalResult, setResetNf} from "./redux/action/cardList";
 import history from "./history";
+import { connect } from "react-redux";
 
 // Loading components asynchronous
 const Print = loadable({
