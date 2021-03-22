@@ -1,4 +1,26 @@
-.btn-page {
-    width: 100px;
-    height: 50px;
+.card-page .card-page-result {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.card-page .card-page-result .card-page-result-left {
+    width: 50%;
+    text-align: center;
+    line-height: 80px;
+}
+
+.card-page .card-page-result .card-page-result-right {
+    flex-direction: row-reverse;
+    width: 50%;
+    display: flex;
+}
+
+.card-page .btn-page {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: row;
+}
+.card-page .btn-page div {
+    padding-right: 10px;
 }

@@ -1,0 +1,15 @@
+.header-page {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.header-page  .header-image {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.header-page .header-title {
+    font-size: 14px;
+}

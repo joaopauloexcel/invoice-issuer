@@ -1,9 +1,13 @@
+import { react2angular } from 'react2angular'
 import ReactButton from '../../react/common/button/index.js';
 import PrintPage from '../../react/features/print/index.js';
+import ReactFooter from '../../react/common/footer/index.js';
+import ReactHeader from '../../react/common/header/index.js';
 
 require('../css/style.css');
 require('../vendors.js');
 require('../../react/common/index.js');
+
 var home = require('../pages/home.html');
 var print = require('../pages/print.html');
 
@@ -26,8 +30,10 @@ angular.module('invoicing', ['react', 'ui.router'])
 
 })
 
-.directive('reactButton', ReactButton)
+// .directive('reactButton', ReactButton)
 .directive('printPage', PrintPage)
+.directive('reactFooter', ReactFooter)
+.directive('reactHeader', ReactHeader)
 
 // The default logo for the invoice
 .constant('DEFAULT_LOGO', 'images/metaware_logo.png')

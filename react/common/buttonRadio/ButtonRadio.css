@@ -1,0 +1,12 @@
+.button-radius {
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 100%;
+    background: #2E9DB6;
+    cursor: pointer;
+    color: #ffffff;
+    line-height: 26px;
+    width: 40px;
+    padding-top: 8px;
+}

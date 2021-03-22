@@ -1,4 +1,43 @@
-.btn-page {
-    width: 100px;
-    height: 50px;
+.button-default {
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    background: #2E9DB6;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-weight: bold;
 }
+
+
+.button-default .button-primary {
+        background: #2E9DB6;
+        color: #FFFFFF;
+    }
+
+.button-default .button-primary:hover {
+        background: rgb(99, 168, 182);
+    }
+
+.button-default .button-secundary {
+        background: #FFFFFF;
+        color: #C4C4C4;
+        border: 1px solid #C4C4C4;
+    }
+
+.button-default .button-secundary:hover {
+        background: rgb(252, 249, 249);
+    }
+
+.button-default .button-tertiary {
+        color: #C4C4C4;
+        border: 1px solid #C4C4C4;
+    }
+
+.button-default .button-tertiary:hover {
+        color: #929292;
+        border: 1px solid #929292;
+    }
+
+.button-default .button-space-text {
+        margin-left: 10px;
+    }
