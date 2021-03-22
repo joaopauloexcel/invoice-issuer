@@ -1,0 +1,15 @@
+{
+    "presets": [
+        "env", 
+        "stage-0", 
+        "react",
+        "es2017"
+    ],
+    "plugins": [
+      "transform-object-rest-spread",
+      "inline-react-svg",
+      "transform-runtime",
+      "syntax-dynamic-import"
+    ],
+    "retainLines": true
+}

@@ -1,11 +1,12 @@
+import reactButton from '../react/diretiva.js';
+
 require('../css/style.css')
+require('../vendors.js')
+require('../react/common/index.js');
 
-var app = angular.module('myapp', [
-  'myapp.directives.reactcomponents',
-  'react'
-]);
+angular.module('invoicing', ['react'])
 
-angular.module('invoicing', [])
+angular.module('invoicing').directive('reactButton', reactButton)
 
 // The default logo for the invoice
 .constant('DEFAULT_LOGO', 'images/metaware_logo.png')
