@@ -1,4 +1,5 @@
 import ReactButton from '../../react/common/button/index.js';
+import PrintPage from '../../react/features/print/index.js';
 
 require('../css/style.css');
 require('../vendors.js');
@@ -12,7 +13,7 @@ angular.module('invoicing', ['react', 'ui.router'])
   var helloState = {
     name: 'hello',
     url: '/hello',
-    template: print
+    template: '<print-page></print-page>'
   }
   var homeState = {
     name: 'home',
@@ -26,6 +27,7 @@ angular.module('invoicing', ['react', 'ui.router'])
 })
 
 .directive('reactButton', ReactButton)
+.directive('printPage', PrintPage)
 
 // The default logo for the invoice
 .constant('DEFAULT_LOGO', 'images/metaware_logo.png')
