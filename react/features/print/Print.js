@@ -28,6 +28,40 @@ const mock = [
 ];
 
 class Print extends Component {
+
+  constructor () {
+    super();
+    this.state = {
+      mock
+    };
+
+    this.removeRow = this.removeRow.bind(this);
+    this.insertRow = this.insertRow.bind(this);
+  }
+
+  removeRow (index) {
+
+    const {mock} = this.state;
+    mock.splice(index, 1)
+    this.setState({mock})
+
+  }
+
+  insertRow () {
+
+    const {mock} = this.state;
+    mock.push(
+      {
+        "description":"-",
+        "quantity":0,
+        "cost":0,
+        "total":"0"
+      }
+    )
+    this.setState({mock})
+
+  }
+
   render = () => {
     return (
       <div className='dashboard card-page'>
@@ -46,10 +80,10 @@ class Print extends Component {
            </div>
          </div>
          <div>
-           <CardList results={mock} />
+           <CardList results={mock} onClickList={({index}) => this.removeRow(index)}/>
          </div>
          <div>
-            <ButtonRadio obj={{"icon":Add}}/>
+            <ButtonRadio obj={{"icon":Add}} onClick={() => this.insertRow()}/>
           </div>
          <div className={'btn-page'}>
            <div>
@@ -58,7 +92,7 @@ class Print extends Component {
               style={{"backgroundColor":"#c2c2c2", "width":"150px", "lineHeight":"40px"}}/>
            </div>
            <div>
-           <Button obj={{"text":"PRINT"}}/>            
+           <Button obj={{"text":"PRINT"}} /* onClick={() => } *//>            
            </div>
          </div>
       </div>

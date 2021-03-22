@@ -102,7 +102,7 @@ CardHeader.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  "numberNf": state.cardResul.numberNf,
+  "numberNf": state.cardResult.numberNf,
 });
 
 const mapDispatchToProps = (dispatch) => ({
