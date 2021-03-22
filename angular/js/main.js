@@ -1,12 +1,31 @@
-import reactButton from '../react/diretiva.js';
+import ReactButton from '../../react/common/button/index.js';
 
-require('../css/style.css')
-require('../vendors.js')
-require('../react/common/index.js');
+require('../css/style.css');
+require('../vendors.js');
+require('../../react/common/index.js');
+var home = require('../pages/home.html');
+var print = require('../pages/print.html');
 
-angular.module('invoicing', ['react'])
+angular.module('invoicing', ['react', 'ui.router'])
 
-angular.module('invoicing').directive('reactButton', reactButton)
+.config(function($stateProvider) {
+  var helloState = {
+    name: 'hello',
+    url: '/hello',
+    template: print
+  }
+  var homeState = {
+    name: 'home',
+    url: '/home',
+    template: home
+  }
+
+  $stateProvider.state(helloState);
+  $stateProvider.state(homeState);
+
+})
+
+.directive('reactButton', ReactButton)
 
 // The default logo for the invoice
 .constant('DEFAULT_LOGO', 'images/metaware_logo.png')

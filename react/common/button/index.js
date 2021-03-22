@@ -1,7 +1,7 @@
-import Button from './common/button/Button.js';
+import Button from './Button.js';
 
 const props = [
-  'children'
+  'label'
 ];
 const ReactButton = reactDirective => reactDirective(Button, props);
 ReactButton.$inject = ['reactDirective'];
