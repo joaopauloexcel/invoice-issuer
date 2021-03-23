@@ -38,6 +38,20 @@ module.exports = {
                 "test": /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 "loader": "url-loader?limit=10000&mimetype=application/font-woff"
 
+            },
+            {
+                "test": /\.svg$/,
+                "use": [
+                    {
+                        "loader": "babel-loader"
+                    },
+                    {
+                        "loader": "react-svg-loader",
+                        "options": {
+                            "jsx": true
+                        }
+                    }
+                ]
             }
         ],
     },

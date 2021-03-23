@@ -6,7 +6,7 @@ import {
 } from '@material-ui/icons';
 import {connect} from "../../redux/connect/index.js";
 import './CardList.css';
-import { setNumberNf } from '../../redux/action/cardList';
+import { setTotalResult } from '../../redux/action/cardList';
 
 class CardList extends Component {
   constructor () {
@@ -15,7 +15,12 @@ class CardList extends Component {
     this.state = {};
     this.onChange = this.onChange.bind(this); 
     this.setDiscount= this.setDiscount.bind(this)
+    this.invoiceSubTotal = this.invoiceSubTotal.bind(this)
   };
+
+  componentWillMount () {
+    this.invoiceSubTotal();
+  }
 
   onChange (event) {
 
@@ -27,13 +32,13 @@ class CardList extends Component {
 
   invoiceSubTotal () {
 
-    const {results} = this.props;
+    const {results, setTotalResult} = this.props;
 
     var total = 0;
     results.forEach((item, key) => {      
       total += this.setDiscount(item, key);
     });
-    return total.toFixed(2) ;
+    setTotalResult(total.toFixed(2))
 
   }
 
@@ -73,7 +78,7 @@ class CardList extends Component {
           <tbody>
           {results && results.map((item, index) => (
             <Fragment key={index} >
-              <tr className={'tbody-list'}>
+              <tr className={'tbody-list'} style={index % 2 === 1 ? {"background":"#f5f5f5"} : {}}>
 
               {header.map((column, index) => (
                 <td key={index}> 
@@ -143,6 +148,7 @@ CardList.propTypes = {
   "results":PropTypes.array,
   "header":PropTypes.array,
   "onClickList":PropTypes.func,
+  "setTotalResult":PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
@@ -150,7 +156,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  "setNumberNf": (value) => dispatch(setNumberNf(value))
+  "setTotalResult": (value) => dispatch(setTotalResult(value))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardList)

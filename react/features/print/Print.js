@@ -11,6 +11,7 @@ import {
 import './Print.css';
 import '../../assets/global.css';
 import Header from '../../common/header/Header';
+import { SelectMenu } from '../../common/selectMenu/SelectMenu';
 
 const mock = [
   {
@@ -46,12 +47,17 @@ const header = [
   }
 ]
 
+const resultsTag = [
+  "123",
+  "456"
+]
 class Print extends Component {
 
   constructor () {
     super();
     this.state = {
-      mock
+      mock,
+      "optionCoin":"Selecione"
     };
 
     this.removeRow = this.removeRow.bind(this);
@@ -81,31 +87,44 @@ class Print extends Component {
   }
 
   render = () => {
+
+    const {optionCoin} = this.state;
     return (
       <div className='dashboard card-page'>
+
           <div>
             <Header/>
           </div>
+
          <div>
            <CardHeader/>
          </div>
+
          <div className={'card-page-result'}>
            <div className={'card-page-result-left'}>
-              ________________
+             <SelectMenu
+                results={resultsTag}
+                value={optionCoin}
+                handleClick={(optionCoin) =>
+                  this.setState({optionCoin})}
+              />
            </div>
            <div className={'card-page-result-right'}>
               <CardResult/>
            </div>
          </div>
+
          <div>
            <CardList 
             results={mock} 
             header={header}
             onClickList={({index}) => this.removeRow(index)}/>
          </div>
+
          <div>
             <ButtonRadio obj={{"icon":Add}} onClick={() => this.insertRow()}/>
           </div>
+
          <div className={'btn-page'}>
            <div>
             <Button 
