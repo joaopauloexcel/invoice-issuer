@@ -1,4 +1,7 @@
-
+.select-menu-filter {
+    display: flex;
+    justify-content: center;
+}
 
 .SelectMenu{
     width: 158px;
@@ -33,6 +36,7 @@
     padding-top: 4.5px;
     position: relative;
     bottom: 30px;
+    left: 5px;
 }
 
 .SelectDrop{
@@ -50,6 +54,7 @@
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     max-height: 290px;
+    margin-top: 32px;
     
 }
 
@@ -67,17 +72,13 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
+    transition: 1s;
     font-size: 14px;
     line-height: 16px;
 
     color: #C4C4C4;
 }
 .SelectDrop .subOption :hover {
-
-    background: #2E9DB6;
-    line-height: 15px;
-}
-
-.SelectDrop .subOption p :hover{
-    color: #ffffff;
+    font-size: 18px;
+    transition: 1s;
 }

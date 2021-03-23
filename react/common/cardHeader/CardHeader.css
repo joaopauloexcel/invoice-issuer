@@ -9,21 +9,29 @@
     min-height: 150px;
     border-radius: 4px;
     width: 100%;
-    justify-content: center;
+    justify-content: space-around;
     background: #fff;
     opacity: 0.9;
     padding-top: 0px;
 }
 
+.card-header-top {
+    margin-top: 10px;
+    margin-bottom: -10px;
+    margin-right: 100px;
+}
+
 .card-header .card-header-container {
-    padding: 15px 30px 15px 30px;
+    padding: 15px 46px 15px 15px;
     display: flex;
     flex-direction: row;
     width: 100%;
+    text-align: start;
 }
 
 .card-header .card-header-container .card-header-left {
     width: 50%;
+    padding-left: 80px;
 }
 
 .card-header .card-header-container .card-header-left  .card-header-top {
@@ -32,4 +40,5 @@
 
 .card-header .card-header-container .card-header-right {
     width: 50%;
+    padding-left: 100px;
 }

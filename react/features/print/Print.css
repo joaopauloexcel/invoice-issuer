@@ -8,6 +8,7 @@
     width: 50%;
     text-align: center;
     line-height: 80px;
+    align-self: center;
 }
 
 .card-page .card-page-result .card-page-result-right {

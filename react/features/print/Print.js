@@ -57,7 +57,7 @@ class Print extends Component {
     super();
     this.state = {
       mock,
-      "optionCoin":"Selecione"
+      "optionCoin":"Moeda"
     };
 
     this.removeRow = this.removeRow.bind(this);
@@ -128,11 +128,11 @@ class Print extends Component {
          <div className={'btn-page'}>
            <div>
             <Button 
-              obj={{"text":"RESET", "type":"secundary"}} 
+              obj={{"text":"Reiniciar", "type":"secundary"}} 
               style={{"backgroundColor":"#c2c2c2", "width":"150px", "lineHeight":"40px"}}/>
            </div>
            <div>
-           <Button obj={{"text":"PRINT"}} /* onClick={() => } *//>            
+           <Button obj={{"text":"Imprimir"}} /* onClick={() => } *//>            
            </div>
          </div>
       </div>

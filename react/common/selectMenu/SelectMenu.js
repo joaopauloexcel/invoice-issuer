@@ -37,8 +37,8 @@ export const SelectMenu = ({
 
 	return (
 		<Suspense fallback={<CircularProgress />}>
-			<div>
-				<div className="SelectMenu">
+			<div className={'select-menu-filter'}>
+				<div className="SelectMenu" onClick={() => !isOpen && setIsOpen(true)}>
 					<p
 						className="mainOption"
 						onClick={() => {

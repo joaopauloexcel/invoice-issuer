@@ -119,7 +119,7 @@ class CardList extends Component {
               <td>
                   <ButtonRadio 
                     obj={{"icon":Clear}} 
-                    style={{"backgroundColor":"#ff83bb", 
+                    style={{"backgroundColor":"rgb(255 129 129)", 
                     "height":"27px", 
                     "width":"27px"}}
                     styleIcon={{

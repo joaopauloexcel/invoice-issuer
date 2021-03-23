@@ -35,8 +35,7 @@ class CardHeader extends Component {
 
   render () {
 
-    const {invoiceNumber,
-      takerName,
+    const {takerName,
       takerReason,
       takerStreet,
       takerCity,
@@ -52,42 +51,95 @@ class CardHeader extends Component {
     return (
       <div className='card-header'>
           <div className='card-header-top'>
-              Nº Invoice: <input type="text" value={numberNf} name={'invoiceNumber'} onChange={this.onChange}/>
+              <b>Nº Invoice</b>: 
+              <input 
+                style={{"borderBottom":"1px solid #c4c4c4", "width":"20px"}} 
+                type="text" 
+                value={numberNf} 
+                name={'invoiceNumber'} 
+                onChange={this.onChange}/>
           </div>
-          <button onClick={() => setNumberNf(2)}>botao</button>
          <div className='card-header-container'>
             <div className='card-header-left'>
                 <div>
-                Prestador: <input type="text" value={takerName} name={'takerName'} onChange={this.onChange}/>
+                  <b>Prestador</b>: 
+                  <input 
+                    style={{"borderBottom":"1px solid #c4c4c4"}} 
+                    type="text" value={takerName} name={'takerName'} 
+                    onChange={this.onChange}/>
                 </div>
                 <div>
-                Razão Social: <input type="text" value={takerReason} name={'takerReason'} onChange={this.onChange}/>
+                  <b>Razão Social</b>: 
+                  <input 
+                    style={{"borderBottom":"1px solid #c4c4c4"}} 
+                    type="text" 
+                    value={takerReason} 
+                    name={'takerReason'} 
+                    onChange={this.onChange}/>
                 </div>
                 <div>
-                Endereço: <input type="text" value={takerStreet} name={'takerStreet'} onChange={this.onChange}/>
+                  <b>Endereço</b>: 
+                  <input 
+                    style={{"borderBottom":"1px solid #c4c4c4"}} 
+                    type="text" value={takerStreet} name={'takerStreet'} 
+                    onChange={this.onChange}/>
                 </div>
                 <div>
-                Cidade: <input type="text" value={takerCity} name={'takerCity'} onChange={this.onChange}/>
+                  <b>Cidade</b>: 
+                  <input 
+                    style={{"borderBottom":"1px solid #c4c4c4"}} 
+                    type="text" value={takerCity} name={'takerCity'} 
+                    onChange={this.onChange}/>
                 </div>
                 <div>
-                Documento: <input type="text" value={takerDocument} name={'takerDocument'} onChange={this.onChange}/>
+                  <b>Documento</b>: 
+                  <input 
+                    style={{"borderBottom":"1px solid #c4c4c4"}} 
+                    type="text" value={takerDocument} 
+                    name={'takerDocument'} 
+                    onChange={this.onChange}/>
                 </div>
             </div>
             <div className='card-header-right'>
                 <div>
-                Tomador: <input type="text" value={providerName} name={'providerName'} onChange={this.onChange}/>
+                  <b>Tomador</b>: 
+                  <input 
+                    style={{"borderBottom":"1px solid #c4c4c4"}} 
+                    type="text" value={providerName} 
+                    name={'providerName'} 
+                    onChange={this.onChange}/>
                 </div>
                 <div>
-                Razão Social: <input type="text" value={providerReason} name={'providerReason'} onChange={this.onChange}/>
+                  <b>Razão Social</b>: 
+                  <input 
+                    style={{"borderBottom":"1px solid #c4c4c4"}} 
+                    type="text" value={providerReason} 
+                    name={'providerReason'} 
+                    onChange={this.onChange}/>
                 </div>
                 <div>
-                Endereço: <input type="text" value={providerStreet} name={'providerStreet'} onChange={this.onChange}/>
+                  <b>Endereço</b>: 
+                  <input 
+                    style={{"borderBottom":"1px solid #c4c4c4"}} 
+                    type="text" value={providerStreet} 
+                    name={'providerStreet'} 
+                    onChange={this.onChange}/>
                 </div>
                 <div>
-                Cidade: <input type="text" value={providerCity} name={'providerCity'} onChange={this.onChange}/>
+                  <b>Cidade</b>: 
+                  <input 
+                    style={{"borderBottom":"1px solid #c4c4c4"}} 
+                    type="text" value={providerCity} 
+                    name={'providerCity'} 
+                    onChange={this.onChange}/>
                 </div>
                 <div>
-                Documento: <input type="text" value={providerDocument} name={'providerDocument'} onChange={this.onChange}/>
+                  <b>Documento</b>: 
+                  <input 
+                    style={{"borderBottom":"1px solid #c4c4c4"}} 
+                    type="text" value={providerDocument} 
+                    name={'providerDocument'} 
+                    onChange={this.onChange}/>
                 </div>
             </div>
           </div>
