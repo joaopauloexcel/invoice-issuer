@@ -1,12 +1,16 @@
 import {
     TOTAL_NF,
     RESET_NF,
-    NUMBER_NF
+    NUMBER_NF,
+    TYPE_COIN,
+    RATE_COIN
 } from '../type/index.js';
 
 const initialState = {
     "totalNf":  0,
-    "numberNf":  0,
+    "numberNf":  1,
+    "typeCoin":"BRL",
+    "rateCoin":1
 };
 
 export const totalcardResult = (state = initialState, action) => {
@@ -25,6 +29,13 @@ export const totalcardResult = (state = initialState, action) => {
         state = {...state, "numberNf": action.payload};
         break;
 
+    case TYPE_COIN:
+        state = {...state, "typeCoin": action.payload};
+        break;
+
+    case RATE_COIN:
+        state = {...state, "rateCoin": action.payload};
+        break;
 
     }
 

@@ -32,6 +32,8 @@
 .card-header .card-header-container .card-header-left {
     width: 50%;
     padding-left: 80px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .card-header .card-header-container .card-header-left .card-header-top {
@@ -41,4 +43,6 @@
 .card-header .card-header-container .card-header-right {
     width: 50%;
     padding-left: 100px;
+    font-size: 15px;
+    font-weight: bold;
 }

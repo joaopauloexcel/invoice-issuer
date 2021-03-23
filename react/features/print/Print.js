@@ -11,8 +11,13 @@ import './Print.css';
 import '../../assets/global.css';
 import Header from '../../common/header/Header';
 import { SelectMenu } from '../../common/selectMenu/SelectMenu';
+import Axios from 'axios';
+import { setRateCoin, setResetNf, setTypeCoinNf } from '../../redux/action/cardList';
+import {connect} from "../../redux/connect/index.js";
+import PropTypes from 'prop-types';
+import { CircularProgress } from '@material-ui/core';
 
-const mock = [
+const productPreDefined = [
   {
     "description":"Gadget",
     "quantity":10,
@@ -25,7 +30,7 @@ const mock = [
   }
 ];
 
-const header = [
+const headerCardList = [
   {
     "name":"Descrição",
     "result":"description",
@@ -46,104 +51,191 @@ const header = [
   }
 ]
 
-const resultsTag = [
-  "123",
-  "456"
-]
 class Print extends Component {
 
   constructor () {
     super();
     this.state = {
-      mock,
-      "optionCoin":"Moeda"
+      productPreDefined,
+      "optionCoin":"Moeda",
+      "apiDataCoins":[],
+      "apiRatesQuotationObj":{}
     };
 
     this.removeRow = this.removeRow.bind(this);
     this.insertRow = this.insertRow.bind(this);
+    this.getCoinBC = this.getCoinBC.bind(this);
+    this.getQuotation = this.getQuotation.bind(this);
+    this.resetAll = this.resetAll.bind(this);
+
+  }
+
+  componentWillMount () {
+    this.getCoinBC();
+    this.getQuotation();
+  }
+
+  getCoinBC () {
+
+    Axios.get(`https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas`)
+    .then((res) => {
+      const {value} = res.data;
+      value.push({
+        "simbolo": "BRL",
+        "nomeFormatado": "Real Brasileiro",
+        "tipoMoeda": "B"
+      })
+      this.setState({"apiDataCoins":value}, () => {
+        console.log({"coinsOBJ":this.state.apiDataCoins})
+      })
+    })
+    .catch((error) => {
+      return
+    })
+
+  }
+
+  getQuotation () {
+
+    Axios.get(`https://api.exchangeratesapi.io/latest?base=BRL`)
+    .then((res) => {
+      const {rates} = res.data;
+
+      this.setState({"apiRatesQuotationObj":rates})
+    })
+    .catch((error) => {
+      return
+    })
+
   }
 
   removeRow (index) {
 
-    const {mock} = this.state;
-    mock.splice(index, 1)
-    this.setState({mock})
+    const {productPreDefined} = this.state;
+    productPreDefined.splice(index, 1)
+    this.setState({productPreDefined})
 
   }
 
   insertRow () {
 
-    const {mock} = this.state;
-    mock.push(
+    const {productPreDefined} = this.state;
+    productPreDefined.push(
       {
         "description":"-",
         "quantity":0,
         "cost":0,
       }
     )
-    this.setState({mock})
+    this.setState({productPreDefined})
+
+  }
+
+  setCoin (value) {
+
+    const {setTypeCoinNf, setRateCoin} = this.props;
+    const {apiRatesQuotationObj} = this.state;
+
+    setTypeCoinNf(value);
+    console.log({apiRatesQuotationObj, value})
+    setRateCoin(apiRatesQuotationObj[value]);
+
+  }
+
+  resetAll () {
+
+    const {setResetNf} = this.props;
+    this.setState({"productPreDefined":[]}, () => {
+      setResetNf();
+    });    
 
   }
 
   render = () => {
 
-    const {optionCoin} = this.state;
+    const {apiDataCoins, productPreDefined} = this.state;
+    const {typeCoin} = this.props;
+
     return (
-      <div className='dashboard card-page'>
+      <React.Suspense fallback={<CircularProgress />}>
+        <div className='dashboard card-page'>
 
           <div>
             <Header/>
           </div>
 
-         <div>
-           <CardHeader/>
-         </div>
+          <div>
+          <CardHeader/>
+          </div>
 
-         <div className={'card-page-result'}>
+          <div className={'card-page-result'}>
 
-           <div className={'card-page-result-left'}>
-             <SelectMenu
-                results={resultsTag}
-                value={optionCoin}
-                handleClick={(optionCoin) =>
-                  this.setState({optionCoin})}
+          <div className={'card-page-result-left'}>
+            <SelectMenu
+                results={apiDataCoins.map((item) => {
+                  return ({
+                    ...item,
+                    "name":item.nomeFormatado || "-",
+                    "value":item.simbolo || "USD",
+                  })
+                })}
+                value={typeCoin}
+                handleClick={(optionCoin) => this.setCoin(optionCoin.value)}
               />
-           </div>
+          </div>
 
-           <div className={'card-page-result-right'}>
+          <div className={'card-page-result-right'}>
               <CardResult/>
-           </div>
+          </div>
 
-         </div>
+          </div>
 
-         <div>
-           <CardList 
-            results={mock} 
-            header={header}
+          <div>
+          <CardList 
+            results={productPreDefined} 
+            header={headerCardList}
             onClickList={({index}) => this.removeRow(index)}/>
-         </div>
+          </div>
 
-         <div>
+          <div>
             <ButtonRadio obj={{"icon":Add}} onClick={() => this.insertRow()}/>
           </div>
 
-         <div className={'btn-page'}>
+          <div className={'btn-page'}>
 
-           <div>
+          <div>
               <Button 
                 obj={{"text":"Reiniciar", "type":"secundary"}} 
-                style={{"backgroundColor":"#c2c2c2", "width":"150px", "lineHeight":"40px"}}/>
-           </div>
-           <div>
-              <Button obj={{"text":"Imprimir"}} /* onClick={() => } *//>            
-           </div>
+                style={{"backgroundColor":"#c2c2c2", "width":"150px", "lineHeight":"40px"}}
+                onClick={() => this.resetAll()}/>
+          </div>
+          <div>
+              <Button obj={{"text":"Imprimir"}} onClick={() => window.print()} />            
+          </div>
 
-         </div>
-         
-      </div>
+          </div>
+
+        </div>
+      </React.Suspense>
     );
   }
 }
 
-export default Print;
+Print.propTypes = {
+	"setTypeCoinNf":PropTypes.func,
+  "setResetNf":PropTypes.func,
+  "setRateCoin":PropTypes.func,
+	"typeCoin":PropTypes.number,
+  };
+  
+const mapStateToProps = (state) => ({
+  "typeCoin": state.cardResult.typeCoin,
+});
 
+const mapDispatchToProps = (dispatch) => ({
+  "setTypeCoinNf": (value) => dispatch(setTypeCoinNf(value)),
+  "setRateCoin": (value) => dispatch(setRateCoin(value)),
+  "setResetNf": (value) => dispatch(setResetNf(value))
+ });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Print)

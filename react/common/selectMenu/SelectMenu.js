@@ -1,5 +1,6 @@
 import React, { Suspense, useState, useRef, useEffect } from 'react';
-import './SelectMenu.css';;
+import './SelectMenu.css';
+import '../../assets/global.css';
 import { CircularProgress } from '@material-ui/core';
 import {connect} from "../../redux/connect/index.js";
 import PropTypes from 'prop-types';
@@ -67,7 +68,7 @@ export const SelectMenu = ({
 								>
 									<p>
 										{
-											item
+											item.name || '---'
 										}
 									</p>
 								</div>

@@ -54,7 +54,7 @@ class CardList extends Component {
   }
 
   render () {
-    const {results, header, onClickList} = this.props;
+    const {results, header, onClickList, typeCoin} = this.props;
     
     return (
       <div className={"card-list-page"}>
@@ -63,7 +63,7 @@ class CardList extends Component {
 
           <thead>
 
-              <tr>
+              {results && results.length > 0 && <tr>
                   {!!header && header.map((item, index) => (
                     <th key={index} style={{"width":item.sizecol || "150px"}}> 
                         {item.name}
@@ -73,18 +73,18 @@ class CardList extends Component {
                       Desconto(%)
                   </th>
                   <th> 
-                        Total
+                        Total - ({typeCoin || "BRL"})
                   </th>
 
                   <th/> 
 
-              </tr>
+              </tr>}
 
           </thead>
 
           <tbody>
 
-          {results && results.map((item, index) => (
+          {!!results && results.map((item, index) => (
             <Fragment key={index} >
 
               <tr 
@@ -162,6 +162,7 @@ class CardList extends Component {
 CardList.propTypes = {
   "setNumberNf":PropTypes.func,
   "totalNf":PropTypes.number,
+  "typeCoin":PropTypes.number,
   "results":PropTypes.array,
   "header":PropTypes.array,
   "onClickList":PropTypes.func,
@@ -170,6 +171,7 @@ CardList.propTypes = {
 
 const mapStateToProps = (state) => ({
   "numberNf": state.cardResult.numberNf,
+  "typeCoin": state.cardResult.typeCoin,
 });
 
 const mapDispatchToProps = (dispatch) => ({

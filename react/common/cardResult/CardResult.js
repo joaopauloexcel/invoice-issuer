@@ -18,6 +18,8 @@ class CardResult extends Component {
     this.onChange = this.onChange.bind(this); 
     this.percentage = this.percentage.bind(this); 
     this.sumAll = this.sumAll.bind(this);
+    this.sumAllRate = this.sumAllRate.bind(this); 
+
 
   };
 
@@ -47,9 +49,20 @@ class CardResult extends Component {
 
   }
 
+  sumAllRate () {
+
+    const {totalNf, rateCoin} = this.props;
+    const {rateNf} = this.state;
+
+    const valueOneCoinToBRL = (1 / (!!rateCoin && rateCoin > 0 ? rateCoin : 1))
+    const totalConvert = (Number(totalNf) * Number(valueOneCoinToBRL))
+    const valueRateNF = (totalConvert * (rateNf/100))
+    return (Number(totalConvert) + Number(valueRateNF)).toFixed(2)
+  }
+
   render () {
 
-    const {totalNf} = this.props;
+    const {totalNf, typeCoin} = this.props;
     const {rateNf, valueAdd} = this.state;
 
     return (
@@ -58,7 +71,7 @@ class CardResult extends Component {
             <div className='card-result-left'>
 
               <div>
-                SubTotal
+                SubTotal - ({typeCoin || "BRL"})
               </div>
 
               <div>
@@ -76,8 +89,13 @@ class CardResult extends Component {
                   />
               </div>
 
+              {!!typeCoin && typeCoin !== "BRL" && 
+                <div>
+                  Total - ({typeCoin || "BRL"})
+                </div>}
+
               <div>
-                Total
+              Total - (BRL)
               </div>
               
             </div>
@@ -98,6 +116,11 @@ class CardResult extends Component {
                 {this.sumAll()}
               </div>
 
+              {!!typeCoin && typeCoin !== "BRL" &&
+                <div>
+                  {this.sumAllRate()}
+                </div>}
+
             </div>
 
           </div>
@@ -107,16 +130,19 @@ class CardResult extends Component {
 }
 
 CardResult.propTypes = {
-  "setNumberNf":PropTypes.func,
   "totalNf":PropTypes.number,
+  "rateCoin":PropTypes.number,
   "results":PropTypes.array,
   "header":PropTypes.array,
+  "setNumberNf":PropTypes.func,
   "onClickList":PropTypes.func,
   "setTotalResult":PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   "totalNf": state.cardResult.totalNf,
+  "typeCoin": state.cardResult.typeCoin,
+  "rateCoin": state.cardResult.rateCoin,
 });
 
 const mapDispatchToProps = (dispatch) => ({

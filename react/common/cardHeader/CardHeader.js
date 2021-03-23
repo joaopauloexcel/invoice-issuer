@@ -27,7 +27,9 @@ class CardHeader extends Component {
 
   onChange (event) {
 
-    this.setState({[event.target.name]: event.target.value});
+    const {setNumberNf} = this.props;
+
+    setNumberNf(event.target.value)
 
   }
 
@@ -44,7 +46,7 @@ class CardHeader extends Component {
       providerCity,
       providerDocument} = this.state;
 
-    const {setNumberNf, numberNf} = this.props;
+    const {numberNf} = this.props;
       
     return (
       <div className='card-header'>
@@ -53,6 +55,7 @@ class CardHeader extends Component {
               <input 
                 style={{"borderBottom":"1px solid #c4c4c4", "width":"40px"}} 
                 type="text"
+                value={numberNf}
                 name={'numberNf'} 
                 onChange={this.onChange}/>
           </div>
