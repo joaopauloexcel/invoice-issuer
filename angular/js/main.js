@@ -3,7 +3,6 @@ import ReactFooter from '../../react/common/footer/index.js';
 
 require('../css/style.css');
 require('../vendors.js');
-require('../../react/common/index.js');
 
 var home = require('../pages/home.html');
 var print = require('../pages/print.html');

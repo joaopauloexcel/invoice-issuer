@@ -3,7 +3,7 @@
     justify-content: center;
 }
 
-.SelectMenu{
+.SelectMenu {
     width: 158px;
     height: 32px;
     border: 1px solid #C4C4C4;
@@ -12,9 +12,10 @@
     display: flex;
     flex-direction: row;
     cursor: pointer;
-    
+
 }
-.SelectMenu .mainOption{
+
+.SelectMenu .mainOption {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -30,7 +31,8 @@
     width: 100px;
     border-right: 1px solid #C4C4C4;
 }
-.SelectMenu .iconArrowDown{
+
+.SelectMenu .iconArrowDown {
     padding-left: 12px;
     padding-right: 8px;
     padding-top: 4.5px;
@@ -39,7 +41,7 @@
     left: 5px;
 }
 
-.SelectDrop{
+.SelectDrop {
     width: 216px;
     position: absolute;
     overflow-y: auto;
@@ -55,10 +57,10 @@
     border-radius: 4px;
     max-height: 290px;
     margin-top: 32px;
-    
+
 }
 
-.SelectDrop .subOption{
+.SelectDrop .subOption {
     padding-left: 10px;
     border-bottom: 1px solid #D8D8D8;
     cursor: pointer;
@@ -67,7 +69,7 @@
     padding-top: 12px;
 }
 
-.SelectDrop .subOption p{
+.SelectDrop .subOption p {
     margin: 0;
     font-family: Roboto;
     font-style: normal;
@@ -78,6 +80,7 @@
 
     color: #C4C4C4;
 }
+
 .SelectDrop .subOption :hover {
     font-size: 18px;
     transition: 1s;

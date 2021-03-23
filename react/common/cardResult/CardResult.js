@@ -21,9 +21,7 @@ class CardResult extends Component {
 
   };
 
-  componentWillMount () {
-
-  }
+  componentWillMount () {}
 
   onChange (event) {
 
@@ -58,40 +56,50 @@ class CardResult extends Component {
       <div className='card-result'>
          <div className='card-result-container'>
             <div className='card-result-left'>
-                <div>
+
+              <div>
                 SubTotal
-                </div>
-                <div>
-                Taxa(%)
+              </div>
+
+              <div>
+                  Taxa(%)
                 <input 
-                    style={{"textAlign":"center",
-                    "borderBottom":"1px solid #c4c4c4",
-                    "width":"50px"
-                    }}
-                    type={"number"} 
-                    name={"rateNf"} 
-                    min={0}
-                    max={100}
-                    onChange={this.onChange}
-                    />
-                </div>
-                <div>
+                  style={{"textAlign":"center",
+                  "borderBottom":"1px solid #c4c4c4",
+                  "width":"50px"
+                  }}
+                  type={"number"} 
+                  name={"rateNf"} 
+                  min={0}
+                  max={100}
+                  onChange={this.onChange}
+                  />
+              </div>
+
+              <div>
                 Total
-                </div>
+              </div>
+              
             </div>
+
             <div className='card-header-right'>
-                <div>
+
+              <div>
                 {totalNf || 0}
-                </div>
-                <div>
+              </div>
+
+              <div>
                 {
                   this.percentage()
                 }
-                </div>
-                <div>
+              </div>
+
+              <div>
                 {this.sumAll()}
-                </div>
+              </div>
+
             </div>
+
           </div>
       </div>
     );

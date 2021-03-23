@@ -58,8 +58,11 @@ class CardList extends Component {
     
     return (
       <div className={"card-list-page"}>
+
         <table className={"card-list-container"} style={{"textAlign":"center"}}>
+
           <thead>
+
               <tr>
                   {!!header && header.map((item, index) => (
                     <th key={index} style={{"width":item.sizecol || "150px"}}> 
@@ -72,51 +75,60 @@ class CardList extends Component {
                   <th> 
                         Total
                   </th>
+
                   <th/> 
+
               </tr>
+
           </thead>
+
           <tbody>
+
           {results && results.map((item, index) => (
             <Fragment key={index} >
-              <tr className={'tbody-list'} style={index % 2 === 1 ? {"background":"#f5f5f5"} : {}}>
 
-              {header.map((column, index) => (
-                <td key={index}> 
+              <tr 
+                className={'tbody-list'} 
+                style={index % 2 === 1 ? {"background":"#f5f5f5"} : {}}>
+
+                {header.map((column, index) => (
+                  <td key={index}> 
+                      <input 
+                        style={{"textAlign":"center",
+                        "borderBottom":"1px solid #c4c4c4"
+                        }}
+                        type={column.type || "string"} 
+                        value={item[column.result]} 
+                        name={column.result} 
+                        onChange={ (event) => {
+                          item[column.result] = event.target.value
+                          this.onChange(event)
+                          }
+                        }/>
+                  </td>
+                ))}
+
+                <td> 
                     <input 
                       style={{"textAlign":"center",
-                      "borderBottom":"1px solid #c4c4c4"
+                      "borderBottom":"1px solid #c4c4c4",
+                      "width":"100px"
                       }}
-                      type={column.type || "string"} 
-                      value={item[column.result]} 
-                      name={column.result} 
+                      type={"number"} 
+                      min={0}
+                      max={100}
+                      name={index} 
                       onChange={ (event) => {
-                        item[column.result] = event.target.value
                         this.onChange(event)
                         }
                       }/>
                 </td>
-              ))}
-              <td> 
-                  <input 
-                    style={{"textAlign":"center",
-                    "borderBottom":"1px solid #c4c4c4",
-                    "width":"100px"
-                    }}
-                    type={"number"} 
-                    min={0}
-                    max={100}
-                    name={index} 
-                    onChange={ (event) => {
-                      this.onChange(event)
-                      }
-                    }/>
-              </td>
 
-              <td> 
-                  {this.setDiscount(item, index)}  
-              </td>
+                <td> 
+                    {this.setDiscount(item, index)}  
+                </td>
 
-              <td>
+                <td>
                   <ButtonRadio 
                     obj={{"icon":Clear}} 
                     style={{"backgroundColor":"rgb(255 129 129)", 
@@ -130,13 +142,18 @@ class CardList extends Component {
                     onClick={() => onClickList({index})}  
                   />
                 </td>
+
               </tr>
+
               <tr style={{"height": "10px"}}/>
             </Fragment>
             ))}
             <tr style={{"height": "10px"}}/>
+
           </tbody>
+
         </table>
+
       </div>     
     );
   }

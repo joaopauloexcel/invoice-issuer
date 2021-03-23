@@ -3,7 +3,7 @@ import './SelectMenu.css';;
 import { CircularProgress } from '@material-ui/core';
 import {connect} from "../../redux/connect/index.js";
 import PropTypes from 'prop-types';
-import Arrow from "../../assets/arrow.svg";
+import Arrow from "../../assets/image/arrow.svg";
 
 
 export const SelectMenu = ({

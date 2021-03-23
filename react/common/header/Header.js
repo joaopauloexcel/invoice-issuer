@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css';
-import ImageLogo from "../../assets/logo.png"
-import Arrow from "../../assets/arrow.svg";
+import ImageLogo from "../../assets/image/logo.png"
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
 
 class Header extends Component {
@@ -15,9 +14,7 @@ class Header extends Component {
     this.setImage = this.setImage.bind(this);
   };
 
-  componentWillMount () {
-
-  }
+  componentWillMount () {}
 
   setImage () {
     localStorage.setItem('logo','')
@@ -26,7 +23,7 @@ class Header extends Component {
   render () {
 
     const {hideButton} = this.state;
-    
+
     const getBase64 = (file) => {
       return new Promise((resolve,reject) => {
         const reader = new FileReader();
@@ -54,10 +51,13 @@ class Header extends Component {
 
     return (
       <div class="header-page">
+
           <div class="header-title">
             INVOICE
           </div>
+
           <div class="header-image">
+
             <div className={'header-image-container'}>
               
               <div>
@@ -65,6 +65,7 @@ class Header extends Component {
               </div>
 
               <div>
+
                 <label class="custom-file-upload">
                   {!hideButton && <ExpandMore 
                     style={{"fontSize":"22px", "cursor":"pointer"}}
@@ -75,6 +76,7 @@ class Header extends Component {
                     onClick={() => this.setState({"hideButton":!hideButton})}
                   />}
                 </label>
+                
                 {hideButton && <div className={'button-container-page'}>
 
                   <div>
@@ -94,6 +96,7 @@ class Header extends Component {
                   </div>
 
                 </div>}
+
               </div>
 
             </div>

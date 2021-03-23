@@ -55,13 +55,13 @@ export const Button = ({
 };
 
 Button.propTypes = {
-  obj: PropTypes.object,
-	onClick: PropTypes.func,
-	style: PropTypes.object,
-	width: PropTypes.string,
-	height: PropTypes.string,
-	className: PropTypes.string,
-	disabled: PropTypes.bool,
+	"obj": PropTypes.object,
+	"onClick": PropTypes.func,
+	"style": PropTypes.object,
+	"width": PropTypes.string,
+	"height": PropTypes.string,
+	"className": PropTypes.string,
+	"disabled": PropTypes.bool,
 };
 
 export default Button;

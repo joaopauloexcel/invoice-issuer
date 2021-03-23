@@ -7,7 +7,6 @@ import CardResult from '../../common/cardResult/CardResult';
 import {
 	Add,
 } from '@material-ui/icons';
-
 import './Print.css';
 import '../../assets/global.css';
 import Header from '../../common/header/Header';
@@ -101,6 +100,7 @@ class Print extends Component {
          </div>
 
          <div className={'card-page-result'}>
+
            <div className={'card-page-result-left'}>
              <SelectMenu
                 results={resultsTag}
@@ -109,9 +109,11 @@ class Print extends Component {
                   this.setState({optionCoin})}
               />
            </div>
+
            <div className={'card-page-result-right'}>
               <CardResult/>
            </div>
+
          </div>
 
          <div>
@@ -126,15 +128,18 @@ class Print extends Component {
           </div>
 
          <div className={'btn-page'}>
+
            <div>
-            <Button 
-              obj={{"text":"Reiniciar", "type":"secundary"}} 
-              style={{"backgroundColor":"#c2c2c2", "width":"150px", "lineHeight":"40px"}}/>
+              <Button 
+                obj={{"text":"Reiniciar", "type":"secundary"}} 
+                style={{"backgroundColor":"#c2c2c2", "width":"150px", "lineHeight":"40px"}}/>
            </div>
            <div>
-           <Button obj={{"text":"Imprimir"}} /* onClick={() => } *//>            
+              <Button obj={{"text":"Imprimir"}} /* onClick={() => } *//>            
            </div>
+
          </div>
+         
       </div>
     );
   }
