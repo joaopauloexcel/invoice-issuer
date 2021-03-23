@@ -27,9 +27,7 @@ class CardHeader extends Component {
 
   onChange (event) {
 
-    this.setState({[event.target.name]: event.target.value}, () => {
-      console.log(this.state.invoiceNumber) 
-    });
+    this.setState({[event.target.name]: event.target.value});
 
   }
 
@@ -53,10 +51,9 @@ class CardHeader extends Component {
           <div className='card-header-top'>
               <b>Nº Invoice</b>: 
               <input 
-                style={{"borderBottom":"1px solid #c4c4c4", "width":"20px"}} 
-                type="text" 
-                value={numberNf} 
-                name={'invoiceNumber'} 
+                style={{"borderBottom":"1px solid #c4c4c4", "width":"40px"}} 
+                type="text"
+                name={'numberNf'} 
                 onChange={this.onChange}/>
           </div>
          <div className='card-header-container'>
@@ -149,6 +146,7 @@ class CardHeader extends Component {
 }
 
 CardHeader.propTypes = {
+  "numberNf":PropTypes.number,
   "setNumberNf":PropTypes.func,
   "totalNf":PropTypes.number,
 };
