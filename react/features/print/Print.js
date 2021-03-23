@@ -17,15 +17,34 @@ const mock = [
     "description":"Gadget",
     "quantity":10,
     "cost":9.95,
-    "total":"$99.00"
   },
   {
     "description":"Gadget",
     "quantity":10,
     "cost":9.95,
-    "total":"$99.00"
   }
 ];
+
+const header = [
+  {
+    "name":"Descrição",
+    "result":"description",
+    "type":"string",
+    "sizecol":"200px"
+  },
+  {
+    "name":"Quantidade",
+    "result":"quantity",
+    "type":"number",
+    "sizecol":"200px"
+  },
+  {
+    "name":"Custo",
+    "result":"cost",
+    "type":"number",
+    "sizecol":"200px"
+  }
+]
 
 class Print extends Component {
 
@@ -55,7 +74,6 @@ class Print extends Component {
         "description":"-",
         "quantity":0,
         "cost":0,
-        "total":"0"
       }
     )
     this.setState({mock})
@@ -80,7 +98,10 @@ class Print extends Component {
            </div>
          </div>
          <div>
-           <CardList results={mock} onClickList={({index}) => this.removeRow(index)}/>
+           <CardList 
+            results={mock} 
+            header={header}
+            onClickList={({index}) => this.removeRow(index)}/>
          </div>
          <div>
             <ButtonRadio obj={{"icon":Add}} onClick={() => this.insertRow()}/>

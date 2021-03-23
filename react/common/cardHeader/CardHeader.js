@@ -31,7 +31,7 @@ class CardHeader extends Component {
       console.log(this.state.invoiceNumber) 
     });
 
-}
+  }
 
   render () {
 

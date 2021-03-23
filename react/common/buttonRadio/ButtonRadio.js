@@ -7,6 +7,7 @@ export const ButtonRadio = ({
 	obj,
 	onClick,
 	style,
+	styleIcon
 })  => {
 
 	// const styleDisable
@@ -18,7 +19,7 @@ export const ButtonRadio = ({
 				onClick={onClick}
 			>
 				{obj ?
-				   (<obj.icon className={'button-radius.icon'} style={{"fontSize":"26px"}}/>) :
+				   (<obj.icon className={'button-radius.icon'} style={styleIcon || {"fontSize":"26px"}}/>) :
 				   ""}
 			</div>
 		</React.Suspense>
@@ -26,9 +27,10 @@ export const ButtonRadio = ({
 };
 
 ButtonRadio.propTypes = {
-	obj: PropTypes.object,
-	onClick: PropTypes.func,
-	style: PropTypes.object,
+	"obj": PropTypes.object,
+	"onClick": PropTypes.func,
+	"style": PropTypes.object,
+	"styleIcon": PropTypes.object,
 };
 
 export default ButtonRadio;
