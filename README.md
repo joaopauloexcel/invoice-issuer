@@ -1,6 +1,6 @@
 ## Angular Invoicing
 
-Use this extremely small and lightweight project built in Angular JS to build your one off Invoices. No monthly fees, No Subscriptions - No heavy duty features, Just simple invoices.
+Migration of a legacy system developed in Angular 1x to React JS.
 
 ## Usage
 
