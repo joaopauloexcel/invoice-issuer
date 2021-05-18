@@ -6,22 +6,6 @@ Use this extremely small and lightweight project built in Angular JS to build yo
 
 Use this project here: [Angular Invoicing](http://metaware.github.io/angular-invoicing) or clone it and customize it to your hearts content.
 
-## Feature Requests
-
-Feel free to open any issues/pull requests if you have any feature requests.
-
-## Roadmap
-
-* Add Discounts feature
-* Add multiple currency support
-
-
-## Contributors
-
-* [Manpreet Singh](http://github.com/manpreetrules)
-* [Jasdeep Singh](http://jasdeep.ca)
-* [William Yaworsky](https://github.com/yaworsw)
-
 ##Demo Link
     http://metaware.github.io/angular-invoicing/
 
